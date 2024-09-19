@@ -13,9 +13,30 @@
   <link rel="stylesheet" href="../public/templates/AdminLTE-3.2.0/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../public/templates/AdminLTE-3.2.0/dist/css/adminlte.min.css">
+
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
+
+  <?php
+  session_start();
+    if(isset($_SESSION['mensaje'])){
+      $respuesta = $_SESSION['mensaje']; ?>
+      <script>
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "<?php echo $respuesta ?>",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      </script>
+  <?php
+  }
+  ?>
   <!-- /.login-logo -->
   <center>
   <img src="../public/images/img1.jpg" width="300px" alt="">

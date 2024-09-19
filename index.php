@@ -1,3 +1,14 @@
+<?php
+include('./app/config.php');
+session_start();
+if(isset($_SESSION['sesion_email'])){
+  //echo "Si existe";
+}else{
+  echo "No existe";
+  header('location:'.$URL.'/login');
+}
+?>
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -252,7 +263,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
+    <a href="<?php echo $URL;?>/app/controllers/login/cerrar_sesion.php" class="btn btn-danger">Cerrar Sesión</a>
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">

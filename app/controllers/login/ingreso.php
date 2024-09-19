@@ -12,12 +12,18 @@ $query->execute();
 $usuarios = $query->fetchAll(fetch_style: PDO::FETCH_ASSOC);
 
 foreach($usuarios as $usuario){
-    $contador = $contado + 1; 
+    $contador = $contador + 1; 
     $email_tabla = $usuario['email'];
-    echo $nombres_tabla = $usuario['nombres'];
+    $nombres = $usuario['nombres'];
 }
 
 if($contador == 0){
     echo "Datos incorrectos";
+}else{
+    echo "Datos correctos";
+    session_start();
+    $_SESSION['sesion_email'] = $email;
+    header('Location:'.$URL.'/index.php' );
 }
+
 ?>

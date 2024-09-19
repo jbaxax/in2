@@ -12,9 +12,12 @@ try{
     //echo "Conexion exitosa";
 
 }catch (PDOException $e){
-    /* print_r($e); */
+    print_r($e);
 
     echo "Error al conectar a la base de datos";
 }
 
+
+//$URL = "http://localhost:3000/in2";
+$URL = "http://localhost:3000";
 ?>

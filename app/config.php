@@ -20,4 +20,7 @@ try{
 
 //$URL = "http://localhost:3000/in2";
 $URL = "http://localhost:3000";
+
+date_default_timezone_set("America/Lima");
+$fechaHora = date("Y-m-d H:i:s");
 ?>

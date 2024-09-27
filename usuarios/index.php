@@ -6,6 +6,23 @@ include('../layout/parte1.php');
 
 include('../app/controllers/usuarios/listado_de_usuarios.php');
 
+
+if(isset($_SESSION['mensaje'])){
+  $respuesta = $_SESSION["mensaje"];?>
+  <script>
+     Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "<?php echo $respuesta ?>",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+  </script>
+<?php
+  unset($_SESSION['mensaje']);
+}
+?>
+
 ?>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -41,16 +58,16 @@ include('../app/controllers/usuarios/listado_de_usuarios.php');
             <div class="card-body">
               <table class="table table-bordered table-hover table-sm">
                 <tr>
-                  <th>Nro</th>
-                  <th>Nombres</th>
-                  <th>Email</th>
+                  <th><center>Nro</center></th>
+                  <th><center>Nombres</center></th>
+                  <th><center>Email</center></th>
                 </tr>
                 <tbody>
                   <?php
-
+                  $contador = 0;
                   foreach ($usuarios_datos as $usuarios_dato) { ?>
                     <tr>
-                      <td><?php echo $usuarios_dato['id_usuario']; ?></td>
+                      <td><center><?php echo $contador = $contador + 1; ?></center></td>
                       <td><?php echo $usuarios_dato['nombres']; ?></td>
                       <td><?php echo $usuarios_dato['email']; ?></td>
                     </tr>

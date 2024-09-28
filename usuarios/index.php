@@ -43,7 +43,7 @@ if(isset($_SESSION['mensaje'])){
     <div class="container-fluid">
 
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
           <div class="card card-outline card-primary">
             <div class="card-header">
               <h3 class="card-title">Usuarios registrados</h3>
@@ -56,13 +56,15 @@ if(isset($_SESSION['mensaje'])){
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table class="table table-bordered table-hover table-sm">
-                <tr>
+              <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
                   <th><center>Nro</center></th>
                   <th><center>Nombres</center></th>
                   <th><center>Email</center></th>
                 </tr>
-                <tbody>
+                  </thead>
+                  <tbody>
                   <?php
                   $contador = 0;
                   foreach ($usuarios_datos as $usuarios_dato) { ?>
@@ -75,7 +77,14 @@ if(isset($_SESSION['mensaje'])){
                   }
                   ?>
                 </tbody>
-              </table>
+                  <tfoot>
+                  <tr>
+                  <th><center>Nro</center></th>
+                  <th><center>Nombres</center></th>
+                  <th><center>Email</center></th>
+                </tr>
+                  </tfoot>
+                </table>
             </div>
             <!-- /.card-body -->
           </div>
@@ -87,6 +96,26 @@ if(isset($_SESSION['mensaje'])){
   </div>
   <!-- /.content -->
 </div>
+
+
 <?php
 include('../layout/parte2.php');
 ?>
+
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>

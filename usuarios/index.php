@@ -13,17 +13,17 @@ include('../app/controllers/usuarios/listado_de_usuarios.php');
 
 
 // Verificar si hay un mensaje en la sesión
-if(isset($_SESSION['mensaje'])){
-  $respuesta = $_SESSION["mensaje"];?>
+if (isset($_SESSION['mensaje'])) {
+  $respuesta = $_SESSION["mensaje"]; ?>
   <script>
-     // Mostrar mensaje de éxito con SweetAlert2
-     Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "<?php echo $respuesta ?>",
-          showConfirmButton: false,
-          timer: 2000,
-        });
+    // Mostrar mensaje de éxito con SweetAlert2
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "<?php echo $respuesta ?>",
+      showConfirmButton: false,
+      timer: 2000,
+    });
   </script>
 <?php
   // Eliminar el mensaje de la sesión después de mostrarlo
@@ -64,20 +64,28 @@ if(isset($_SESSION['mensaje'])){
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
-                  <thead>
+                <thead>
                   <tr>
-                  <th><center>Nro</center></th>
-                  <th><center>Nombres</center></th>
-                  <th><center>Email</center></th>
-                </tr>
-                  </thead>
-                  <tbody>
+                    <th>
+                      <center>Nro</center>
+                    </th>
+                    <th>
+                      <center>Nombres</center>
+                    </th>
+                    <th>
+                      <center>Email</center>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
                   <?php
                   $contador = 0;
                   // Iterar sobre los datos de usuarios
                   foreach ($usuarios_datos as $usuarios_dato) { ?>
                     <tr>
-                      <td><center><?php echo $contador = $contador + 1; ?></center></td>
+                      <td>
+                        <center><?php echo $contador = $contador + 1; ?></center>
+                      </td>
                       <td><?php echo $usuarios_dato['nombres']; ?></td>
                       <td><?php echo $usuarios_dato['email']; ?></td>
                     </tr>
@@ -85,14 +93,20 @@ if(isset($_SESSION['mensaje'])){
                   }
                   ?>
                 </tbody>
-                  <tfoot>
+                <tfoot>
                   <tr>
-                  <th><center>Nro</center></th>
-                  <th><center>Nombres</center></th>
-                  <th><center>Email</center></th>
-                </tr>
-                  </tfoot>
-                </table>
+                    <th>
+                      <center>Nro</center>
+                    </th>
+                    <th>
+                      <center>Nombres</center>
+                    </th>
+                    <th>
+                      <center>Email</center>
+                    </th>
+                  </tr>
+                </tfoot>
+              </table>
             </div>
             <!-- /.card-body -->
           </div>
@@ -112,32 +126,57 @@ include('../layout/parte2.php');
 ?>
 
 <script>
-  $(function () {
+  $(function() {
     // Inicializar DataTable con opciones personalizadas
     $("#example1").DataTable({
       "pageLength": 5,
-          language: {
-              "emptyTable": "No hay información",
-              "decimal": "",
-              "info": "Mostrando _START_ a _END_ de _TOTAL_ Usuarios",
-              "infoEmpty": "Mostrando 0 a 0 de 0 Usuarios",
-              "infoFiltered": "(Filtrado de _MAX_ total Usuarios)",
-              "infoPostFix": "",
-              "thousands": ",",
-              "lengthMenu": "Mostrar _MENU_ Usuarios",
-              "loadingRecords": "Cargando...",
-              "processing": "Procesando...",
-              "search": "Buscador:",
-              "zeroRecords": "Sin resultados encontrados",
-              "paginate": {
-                  "first": "Primero",
-                  "last": "Ultimo",
-                  "next": "Siguiente",
-                  "previous": "Anterior"
-              }
-             },
-      "responsive": true, "lengthChange": true, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      language: {
+        "emptyTable": "No hay información",
+        "decimal": "",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Usuarios",
+        "infoEmpty": "Mostrando 0 a 0 de 0 Usuarios",
+        "infoFiltered": "(Filtrado de _MAX_ total Usuarios)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Usuarios",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscador:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+          "first": "Primero",
+          "last": "Ultimo",
+          "next": "Siguiente",
+          "previous": "Anterior"
+        }
+      },
+      "responsive": true,
+      "lengthChange": true,
+      "autoWidth": false,
+      buttons: [{
+          extend: 'collection',
+          text: 'Reportes',
+          orientation: 'landscape',
+          buttons: [{
+            text: 'Copiar',
+            extend: 'copy'
+          }, {
+            extend: 'pdf',
+          }, {
+            extend: 'csv',
+          }, {
+            extend: 'excel',
+          }, {
+            text: 'Imprimir',
+            extend: 'print'
+          }]
+        },
+        {
+          extend: 'colvis',
+          text: 'Visor de columnas',
+          collectionLayout: 'fixed three-columns'
+        }
+      ],
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
   });
 </script>

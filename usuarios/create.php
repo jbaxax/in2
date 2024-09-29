@@ -1,13 +1,18 @@
 <?php
+// Incluir archivo de configuración
 include('../app/config.php');
+
+// Incluir archivo de manejo de sesión
 include('../layout/sesion.php');
 
+// Incluir la primera parte del layout (encabezado, menú, etc.)
 include('../layout/parte1.php');
 
-
+// Verificar si hay un mensaje en la sesión
 if(isset($_SESSION['mensaje'])){
   $respuesta = $_SESSION["mensaje"];?>
   <script>
+     // Mostrar mensaje de error con SweetAlert2
      Swal.fire({
           position: "top-end",
           icon: "error",
@@ -17,11 +22,12 @@ if(isset($_SESSION['mensaje'])){
         });
   </script>
 <?php
+  // Eliminar el mensaje de la sesión después de mostrarlo
   unset($_SESSION['mensaje']);
 }
 ?>
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+    <!-- Encabezado de contenido (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -34,7 +40,7 @@ if(isset($_SESSION['mensaje'])){
     </div>
     <!-- /.content-header -->
     
-    <!-- Main content -->
+    <!-- Contenido principal -->
     <div class="content">
       <div class="container-fluid">
         <div class="row">
@@ -53,6 +59,7 @@ if(isset($_SESSION['mensaje'])){
             <div class="card-body">
               <div class="row">
                 <div class="col-md-12">
+                  <!-- Formulario para crear un nuevo usuario -->
                   <form action="../app/controllers/usuarios/create.php" method="post">
                     <div class="form-group">
                       <label for="">Nombres</label>
@@ -92,5 +99,6 @@ if(isset($_SESSION['mensaje'])){
     <!-- /.content -->
   </div>
 <?php
+// Incluir la segunda parte del layout (pie de página, scripts, etc.)
 include('../layout/parte2.php');
 ?>

@@ -1,12 +1,16 @@
 <?php
+// Incluir archivo de configuración
 include('app/config.php');
+
+// Incluir archivo de manejo de sesión
 include('layout/sesion.php');
 
+// Incluir la primera parte del layout (encabezado, menú, etc.)
 include('layout/parte1.php');
 
 ?>
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+    <!-- Encabezado de contenido (encabezado de página) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -19,7 +23,7 @@ include('layout/parte1.php');
     </div>
     <!-- /.content-header -->
     
-    <!-- Main content -->
+    <!-- Contenido principal -->
     <div class="content">
       <div class="container-fluid">
         <div class="as">aaa</div>
@@ -29,6 +33,7 @@ include('layout/parte1.php');
     <!-- /.content -->
   </div>
 <?php
+// Incluir la segunda parte del layout (pie de página, scripts, etc.)
 include('layout/parte2.php');
 ?>
 

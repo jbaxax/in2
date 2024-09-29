@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sistema de ventas</title>
 
+  <!-- Importación de estilos y scripts necesarios -->
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -14,7 +15,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="../public/templates/AdminLTE-3.2.0/dist/css/adminlte.min.css">
 
-  <!-- SweetAlert2 -->
+  <!-- SweetAlert2 para mostrar alertas personalizadas -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
@@ -22,10 +23,13 @@
 <div class="login-box">
 
   <?php
+  // Iniciar sesión
   session_start();
+  // Verificar si hay un mensaje en la sesión (por ejemplo, de un intento de login fallido)
     if(isset($_SESSION['mensaje'])){
       $respuesta = $_SESSION['mensaje']; ?>
       <script>
+        // Mostrar mensaje de error con SweetAlert2
         Swal.fire({
           position: "top-end",
           icon: "error",
@@ -35,7 +39,9 @@
         });
       </script>
   <?php
-  }
+    // Limpiar el mensaje de la sesión después de mostrarlo
+    unset($_SESSION['mensaje']);
+    }
   ?>
   <!-- /.login-logo -->
   <center>
@@ -50,6 +56,7 @@
     <div class="card-body">
       <p class="login-box-msg">Ingrese sus datos</p>
 
+      <!-- Formulario de login -->
       <form action="../app/controllers/login/ingreso.php" method="post">
         <div class="input-group mb-3">
           <input type="email" name="email" class="form-control" placeholder="Email">
@@ -71,7 +78,6 @@
         <hr>
 
         <div class="row">
-      
           <!-- /.col -->
           <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
@@ -90,6 +96,7 @@
 </div>
 <!-- /.login-box -->
 
+<!-- Importación de scripts necesarios -->
 <!-- jQuery -->
 <script src="../public/templates/AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->

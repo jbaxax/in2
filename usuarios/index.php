@@ -1,15 +1,22 @@
 <?php
+// Incluir archivo de configuración
 include('../app/config.php');
+
+// Incluir archivo de manejo de sesión
 include('../layout/sesion.php');
 
+// Incluir la primera parte del layout (encabezado, menú, etc.)
 include('../layout/parte1.php');
 
+// Incluir el controlador para listar usuarios
 include('../app/controllers/usuarios/listado_de_usuarios.php');
 
 
+// Verificar si hay un mensaje en la sesión
 if(isset($_SESSION['mensaje'])){
   $respuesta = $_SESSION["mensaje"];?>
   <script>
+     // Mostrar mensaje de éxito con SweetAlert2
      Swal.fire({
           position: "top-end",
           icon: "success",
@@ -19,13 +26,13 @@ if(isset($_SESSION['mensaje'])){
         });
   </script>
 <?php
+  // Eliminar el mensaje de la sesión después de mostrarlo
   unset($_SESSION['mensaje']);
 }
 ?>
 
-?>
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
+  <!-- Encabezado de contenido (encabezado de página) -->
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -38,7 +45,7 @@ if(isset($_SESSION['mensaje'])){
   </div>
   <!-- /.content-header -->
 
-  <!-- Main content -->
+  <!-- Contenido principal -->
   <div class="content">
     <div class="container-fluid">
 
@@ -67,6 +74,7 @@ if(isset($_SESSION['mensaje'])){
                   <tbody>
                   <?php
                   $contador = 0;
+                  // Iterar sobre los datos de usuarios
                   foreach ($usuarios_datos as $usuarios_dato) { ?>
                     <tr>
                       <td><center><?php echo $contador = $contador + 1; ?></center></td>
@@ -99,22 +107,24 @@ if(isset($_SESSION['mensaje'])){
 
 
 <?php
+// Incluir la segunda parte del layout (pie de página, scripts, etc.)
 include('../layout/parte2.php');
 ?>
 
 <script>
   $(function () {
+    // Inicializar DataTable con opciones personalizadas
     $("#example1").DataTable({
       "pageLength": 5,
           language: {
               "emptyTable": "No hay información",
               "decimal": "",
-              "info": "Mostrando START a END de TOTAL Usuarios",
+              "info": "Mostrando _START_ a _END_ de _TOTAL_ Usuarios",
               "infoEmpty": "Mostrando 0 a 0 de 0 Usuarios",
-              "infoFiltered": "(Filtrado de MAX total Usuarios)",
+              "infoFiltered": "(Filtrado de _MAX_ total Usuarios)",
               "infoPostFix": "",
               "thousands": ",",
-              "lengthMenu": "Mostrar MENU Usuarios",
+              "lengthMenu": "Mostrar _MENU_ Usuarios",
               "loadingRecords": "Cargando...",
               "processing": "Procesando...",
               "search": "Buscador:",

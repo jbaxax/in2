@@ -80,7 +80,7 @@ include('../app/controllers/usuarios/listado_de_usuarios.php');
                           <div class="btn-group">
                             <a href="<?php echo $URL; ?>/usuarios/show.php?id=<?php echo $id_usuario; ?>" type="button" class="btn btn-info"><i class="fas fa-eye"></i> Ver</a>
                             <a href="<?php echo $URL; ?>/usuarios/update.php?id=<?php echo $id_usuario; ?>" type="button" class="btn btn-success"><i class="fas fa-edit"></i> Editar</a>
-                            <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Borrar</button>
+                            <a href="<?php echo $URL; ?>/usuarios/delete.php?id=<?php echo $id_usuario; ?>" type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Borrar</a>
                           </div>
                         </center>
                       </td>

@@ -78,6 +78,10 @@ include('../app/controllers/usuarios/show_usuario.php');
     <!-- /.content -->
   </div>
 <?php
+
+// Incluir el archivo de mensajes
+include('../layout/mensajes.php');
+
 // Incluir la segunda parte del layout (pie de página, scripts, etc.)
 include('../layout/parte2.php');
 ?>

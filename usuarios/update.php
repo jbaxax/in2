@@ -51,18 +51,18 @@ include('../app/controllers/usuarios/update_usuario.php');
                     <input type="hidden" name="id_usuario" value="<?php echo $id_usuario_get; ?>">
                     <div class="form-group">
                       <label for="">Nombres</label>
-                      <input type="text" name="nombres" class="form-control" value="<?php echo $nombres; ?>">
+                      <input type="text" name="nombres" class="form-control" value="<?php echo $nombres; ?>" required>
                     </div>
                     <div class="form-group">
                       <label for="">Email</label>
-                      <input type="email" name="email" class="form-control" value="<?php echo $email; ?>">
+                      <input type="email" name="email" class="form-control" value="<?php echo $email; ?>" required>
                     </div>
                     <div class="form-group">
-                      <label for="">Contraseña</label>
+                      <label for="">Nueva contraseña</label>
                       <input type="text" name="password_user" class="form-control" >
                     </div>
                     <div class="form-group">
-                      <label for="">Repita la contraseña</label>
+                      <label for="">Repita la nueva contraseña</label>
                       <input type="text" name="password_repeat" class="form-control" >
                     </div>
 

@@ -75,19 +75,33 @@ if (isset($_SESSION['mensaje'])) {
                     <th>
                       <center>Email</center>
                     </th>
+                    <th>
+                      <center>Acciones</center>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
                   $contador = 0;
                   // Iterar sobre los datos de usuarios
-                  foreach ($usuarios_datos as $usuarios_dato) { ?>
+                  foreach ($usuarios_datos as $usuarios_dato) { 
+                    $id_usuario = $usuarios_dato['id_usuario'];
+                    ?>
                     <tr>
                       <td>
                         <center><?php echo $contador = $contador + 1; ?></center>
                       </td>
                       <td><?php echo $usuarios_dato['nombres']; ?></td>
                       <td><?php echo $usuarios_dato['email']; ?></td>
+                      <td>
+                        <center>
+                          <div class="btn-group">
+                            <a href="<?php echo $URL; ?>/usuarios/show.php?id=<?php echo $id_usuario; ?>" type="button" class="btn btn-info"><i class="fas fa-eye"></i> Ver</a>
+                            <a type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
+                            <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Borrar</button>
+                          </div>
+                        </center>
+                      </td>
                     </tr>
                   <?php
                   }
@@ -103,6 +117,9 @@ if (isset($_SESSION['mensaje'])) {
                     </th>
                     <th>
                       <center>Email</center>
+                    </th>
+                    <th>
+                      <center>Acciones</center>
                     </th>
                   </tr>
                 </tfoot>

@@ -8,6 +8,9 @@ include('../layout/sesion.php');
 // Incluir la primera parte del layout (encabezado, menú, etc.)
 include('../layout/parte1.php');
 
+// Incluir el archivo de controladores
+include('../app/controllers/usuarios/show_usuario.php');
+
 ?>
 
 <div class="content-wrapper">
@@ -31,7 +34,7 @@ include('../layout/parte1.php');
           <div class="col-md-5">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Completa el formulario</h3>
+              <h3 class="card-title">Datos del usuario</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -44,32 +47,24 @@ include('../layout/parte1.php');
               <div class="row">
                 <div class="col-md-12">
                   <!-- Formulario para crear un nuevo usuario -->
-                  <form action="../app/controllers/usuarios/create.php" method="post">
+                  
                     <div class="form-group">
                       <label for="">Nombres</label>
-                      <input type="text" name="nombres" class="form-control" placeholder="Ingresa nombres del nuevo usuario">
+                      <input type="text" name="nombres" class="form-control" value="<?php echo $nombres; ?>" disabled>
                     </div>
                     <div class="form-group">
                       <label for="">Email</label>
-                      <input type="email" name="email" class="form-control" placeholder="Ingresa el correo del nuevo usuario">
-                    </div>
-                    <div class="form-group">
-                      <label for="">Contraseña</label>
-                      <input type="text" name="password_user" class="form-control" >
-                    </div>
-                    <div class="form-group">
-                      <label for="">Repita la contraseña</label>
-                      <input type="text" name="password_repeat" class="form-control" >
+                      <input type="email" name="email" class="form-control" value="<?php echo $email; ?>" disabled>
                     </div>
 
                     <hr>
                     <div class="form-group">
-                      <a href="index.php" class="btn btn-secondary">Cancelar</a>
-                      <button type="submit" class="btn btn-primary">Guardar</button>
+                      <a href="index.php" class="btn btn-secondary">Volver</a>
+                      
                     </div>
 
 
-                  </form>
+                  
                 </div>
               </div>
             </div>

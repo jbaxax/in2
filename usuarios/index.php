@@ -11,24 +11,6 @@ include('../layout/parte1.php');
 // Incluir el controlador para listar usuarios
 include('../app/controllers/usuarios/listado_de_usuarios.php');
 
-
-// Verificar si hay un mensaje en la sesión
-if (isset($_SESSION['mensaje'])) {
-  $respuesta = $_SESSION["mensaje"]; ?>
-  <script>
-    // Mostrar mensaje de éxito con SweetAlert2
-    Swal.fire({
-      position: "top-end",
-      icon: "success",
-      title: "<?php echo $respuesta ?>",
-      showConfirmButton: false,
-      timer: 2000,
-    });
-  </script>
-<?php
-  // Eliminar el mensaje de la sesión después de mostrarlo
-  unset($_SESSION['mensaje']);
-}
 ?>
 
 <div class="content-wrapper">
@@ -97,7 +79,7 @@ if (isset($_SESSION['mensaje'])) {
                         <center>
                           <div class="btn-group">
                             <a href="<?php echo $URL; ?>/usuarios/show.php?id=<?php echo $id_usuario; ?>" type="button" class="btn btn-info"><i class="fas fa-eye"></i> Ver</a>
-                            <a type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
+                            <a href="<?php echo $URL; ?>/usuarios/update.php?id=<?php echo $id_usuario; ?>" type="button" class="btn btn-success"><i class="fas fa-edit"></i> Editar</a>
                             <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Borrar</button>
                           </div>
                         </center>
@@ -138,6 +120,10 @@ if (isset($_SESSION['mensaje'])) {
 
 
 <?php
+
+// Incluir el archivo de mensajes
+include('../layout/mensajes.php');
+
 // Incluir la segunda parte del layout (pie de página, scripts, etc.)
 include('../layout/parte2.php');
 ?>

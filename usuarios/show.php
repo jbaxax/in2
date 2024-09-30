@@ -19,7 +19,7 @@ include('../app/controllers/usuarios/show_usuario.php');
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Registro de un nuevo usuario</h1>
+            <h1 class="m-0">Datos del usuario</h1>
           </div><!-- /.col -->
          
         </div><!-- /.row -->
@@ -46,7 +46,7 @@ include('../app/controllers/usuarios/show_usuario.php');
             <div class="card-body">
               <div class="row">
                 <div class="col-md-12">
-                  <!-- Formulario para crear un nuevo usuario -->
+                  <!-- Datos del usuario -->
                   
                     <div class="form-group">
                       <label for="">Nombres</label>

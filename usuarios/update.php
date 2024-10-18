@@ -69,7 +69,7 @@ include('../app/controllers/usuarios/update_usuario.php');
                     <hr>
                     <div class="form-group">
                       <a href="index.php" class="btn btn-secondary">Cancelar</a>
-                      <button type="submit" class="btn btn-primary">Guardar</button>
+                      <button type="submit" class="btn btn-success">Actualizar</button>
                     </div>
 
 

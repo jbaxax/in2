@@ -8,6 +8,9 @@ include('../layout/sesion.php');
 // Incluir la primera parte del layout (encabezado, menú, etc.)
 include('../layout/parte1.php');
 
+// Incluir el controlador para listar roles
+include('../app/controllers/roles/listado_de_roles.php');
+
 ?>
 
 <div class="content-wrapper">
@@ -52,6 +55,19 @@ include('../layout/parte1.php');
                     <div class="form-group">
                       <label for="">Email</label>
                       <input type="email" name="email" class="form-control" placeholder="Ingresa el correo del nuevo usuario" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="">Rol del usuario</label>
+                      <select name="rol" id="" class="form-control">
+                        
+                          <?php
+                          foreach($roles_datos as $roles_dato){ ?>
+                          <option value="<?php echo $roles_dato['id_rol'] ?>"><?php echo $roles_dato['rol'] ?></option>
+                          <?php
+                          } 
+                          ?>
+                        
+                      </select>
                     </div>
                     <div class="form-group">
                       <label for="">Contraseña</label>

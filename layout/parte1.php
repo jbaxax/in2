@@ -134,6 +134,47 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tags"></i>
+              <p>
+                Categorias
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo $URL;?>/roles" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listado de categorias</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-list"></i>
+              <p>
+                Almacen
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo $URL;?>/roles" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listado de productos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo $URL;?>/roles/create.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Creación de producto</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
+          <li class="nav-item">
             <a href="<?php echo $URL;?>/app/controllers/login/cerrar_sesion.php"  class="nav-link" style="background-color: #ca0a0b">
               <i class="nav-icon fas fa-door-closed"></i>
               <p>

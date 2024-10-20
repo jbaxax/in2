@@ -11,27 +11,29 @@ include('../layout/parte1.php');
 // Incluir el archivo de controladores
 include('../app/controllers/usuarios/update_usuario.php');
 
+// Incluir el controlador para listar roles
+include('../app/controllers/roles/listado_de_roles.php');
 ?>
 
 <div class="content-wrapper">
-    <!-- Encabezado de contenido (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Actualizar datos del usuario</h1>
-          </div><!-- /.col -->
-         
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-    
-    <!-- Contenido principal -->
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-5">
+  <!-- Encabezado de contenido (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Actualizar datos del usuario</h1>
+        </div><!-- /.col -->
+
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Contenido principal -->
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-5">
           <div class="card card-success">
             <div class="card-header">
               <h3 class="card-title">Datos del usuario</h3>
@@ -58,12 +60,34 @@ include('../app/controllers/usuarios/update_usuario.php');
                       <input type="email" name="email" class="form-control" value="<?php echo $email; ?>" required>
                     </div>
                     <div class="form-group">
+                      <label for="">Rol del usuario</label>
+                      <select name="rol" id="" class="form-control">
+
+                        <?php
+                        foreach ($roles_datos as $roles_dato) {
+                          $rol_tabla = $roles_dato['rol'];
+                          $id_rol = $roles_dato['id_rol'];
+                        ?>
+                          <option value="<?php echo $id_rol; ?>"
+                            <?php
+                            if ($rol_tabla == $rol) { ?>
+                            selected="selected"
+                            <?php
+                            }
+                            ?> ><?php echo $rol_tabla ?></option>
+                        <?php
+                        }
+                        ?>
+
+                      </select>
+                    </div>
+                    <div class="form-group">
                       <label for="">Nueva contraseña</label>
-                      <input type="text" name="password_user" class="form-control" >
+                      <input type="text" name="password_user" class="form-control">
                     </div>
                     <div class="form-group">
                       <label for="">Repita la nueva contraseña</label>
-                      <input type="text" name="password_repeat" class="form-control" >
+                      <input type="text" name="password_repeat" class="form-control">
                     </div>
 
                     <hr>
@@ -74,22 +98,22 @@ include('../app/controllers/usuarios/update_usuario.php');
 
 
                   </form>
-                     
 
 
-                  
+
+
                 </div>
               </div>
             </div>
             <!-- /.card-body -->
           </div>
-          </div>
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
   </div>
+  <!-- /.content -->
+</div>
 <?php
 
 // Incluir el archivo de mensajes

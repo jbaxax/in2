@@ -20,9 +20,9 @@ include('../app/controllers/categorias/listado_de_categoria.php');
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 ">Listado de Categorias <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-                        <i class="fa fa-plus"></i> Nuevo
-                    </button></h1>
-                    
+                            <i class="fa fa-plus"></i> Nuevo
+                        </button></h1>
+
                 </div><!-- /.col -->
 
             </div><!-- /.row -->
@@ -68,6 +68,7 @@ include('../app/controllers/categorias/listado_de_categoria.php');
                                     // Iterar sobre los datos de usuarios
                                     foreach ($categorias_datos as $categorias_dato) {
                                         $id_categoria = $categorias_dato['id_categoria'];
+                                        $nombre_categoria = $categorias_dato['nombre_categoria'];
                                     ?>
                                         <tr>
                                             <td>
@@ -77,7 +78,57 @@ include('../app/controllers/categorias/listado_de_categoria.php');
                                             <td>
                                                 <center>
                                                     <div class="btn-group">
-                                                        <a href="<?php echo $URL; ?>/categoria/update.php?id=<?php echo $id_categoria; ?>" type="button" class="btn btn-success"><i class="fas fa-edit"></i> Editar</a>
+                                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-update<?php echo $id_categoria; ?>">
+                                                            <i class="fa fa-edit"></i> Editar
+                                                        </button>
+                                                        <!-- modal para editar categorias -->
+                                                        <div class="modal fade" id="modal-update<?php echo $id_categoria; ?>">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header" style="background-color: #28a745; color: white">
+                                                                        <h4 class="modal-title">Editar categoria</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <label for="">Nombre de la categoria</label>
+                                                                                    <input type="text" id="nombre_categoria<?php echo $id_categoria;?>" value="<?php echo $nombre_categoria; ?>" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="modal-footer justify-content-between">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                                        <button type="button" class="btn btn-success" id="btn-update<?php echo $id_categoria;?>">Actualizar</button>
+
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.modal-content -->
+                                                            </div>
+                                                            <!-- /.modal-dialog -->
+                                                        </div>
+                                                        <!-- /.modal para editar categorias-->
+
+                                                        <script>
+                                                            $('#btn-update<?php echo $id_categoria; ?>').click(function() {
+                                                                var nombre_categoria = $('#nombre_categoria<?php echo $id_categoria; ?>').val();
+                                                                var id_categoria = '<?php echo $id_categoria; ?>';
+                                                                var url = "../app/controllers/categorias/update_de_categoria.php";
+
+                                                                $.get(url, {
+                                                                    nombre_categoria: nombre_categoria,id_categoria:id_categoria
+                                                                }, function(datos) {
+                                                                    $('#respuesta_update<?php echo $id_categoria;?>').html(datos);
+                                                                });
+                                                            })
+                                                        </script>
+                                                        <div id="respuesta_update<?php echo $id_categoria;?>"></div>
                                                     </div>
                                                 </center>
                                             </td>
@@ -190,31 +241,46 @@ include('../layout/parte2.php');
                 </button>
             </div>
             <div class="modal-body">
-                
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="">Nombre de la categoria</label>
-                                <input type="text" class="form-control">
-                            </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="">Nombre de la categoria</label>
+                            <input type="text" id="nombre_categoria" class="form-control">
                         </div>
                     </div>
-               
+                </div>
+
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary" id="btn-create">Guardar</button>
+
             </div>
         </div>
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
 </div>
-<!-- /.modal -->
+<!-- /.modal para registrar categorias-->
+
+
+
+
 
 
 <script>
-    $('#btn_create').click(function (){
-        alert("guardar")
+    $('#btn-create').click(function() {
+        var nombre_categoria = $('#nombre_categoria').val();
+        var url = "../app/controllers/categorias/registro_de_categoria.php";
+
+        $.get(url, {
+            nombre_categoria: nombre_categoria
+        }, function(datos) {
+            $('#respuesta').html(datos);
+
+        });
     })
 </script>
+
+<div id="respuesta"></div>

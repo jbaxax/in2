@@ -97,7 +97,8 @@ include('../app/controllers/categorias/listado_de_categoria.php');
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
                                                                                     <label for="">Nombre de la categoria</label>
-                                                                                    <input type="text" id="nombre_categoria<?php echo $id_categoria;?>" value="<?php echo $nombre_categoria; ?>" class="form-control">
+                                                                                    <input type="text" id="nombre_categoria<?php echo $id_categoria; ?>" value="<?php echo $nombre_categoria; ?>" class="form-control">
+                                                                                    <small style="color:red;display:none" id="lbl_update<?php echo $id_categoria; ?>">*Este campo es requerido</small>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -105,7 +106,7 @@ include('../app/controllers/categorias/listado_de_categoria.php');
                                                                     </div>
                                                                     <div class="modal-footer justify-content-between">
                                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                                                        <button type="button" class="btn btn-success" id="btn-update<?php echo $id_categoria;?>">Actualizar</button>
+                                                                        <button type="button" class="btn btn-success" id="btn-update<?php echo $id_categoria; ?>">Actualizar</button>
 
                                                                     </div>
                                                                 </div>
@@ -119,16 +120,25 @@ include('../app/controllers/categorias/listado_de_categoria.php');
                                                             $('#btn-update<?php echo $id_categoria; ?>').click(function() {
                                                                 var nombre_categoria = $('#nombre_categoria<?php echo $id_categoria; ?>').val();
                                                                 var id_categoria = '<?php echo $id_categoria; ?>';
-                                                                var url = "../app/controllers/categorias/update_de_categoria.php";
 
-                                                                $.get(url, {
-                                                                    nombre_categoria: nombre_categoria,id_categoria:id_categoria
-                                                                }, function(datos) {
-                                                                    $('#respuesta_update<?php echo $id_categoria;?>').html(datos);
-                                                                });
+                                                                if (nombre_categoria == "") {
+                                                                    $('#nombre_categoria<?php echo $id_categoria; ?>').focus();
+                                                                    $('#lbl_update<?php echo $id_categoria; ?>').css('display', 'block');
+                                                                } else {
+                                                                    var url = "../app/controllers/categorias/update_de_categoria.php";
+
+                                                                    $.get(url, {
+                                                                        nombre_categoria: nombre_categoria,
+                                                                        id_categoria: id_categoria
+                                                                    }, function(datos) {
+                                                                        $('#respuesta_update<?php echo $id_categoria; ?>').html(datos);
+                                                                    });
+                                                                }
+
+
                                                             })
                                                         </script>
-                                                        <div id="respuesta_update<?php echo $id_categoria;?>"></div>
+                                                        <div id="respuesta_update<?php echo $id_categoria; ?>"></div>
                                                     </div>
                                                 </center>
                                             </td>
@@ -245,8 +255,9 @@ include('../layout/parte2.php');
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="">Nombre de la categoria</label>
+                            <label for="">Nombre de la categoria <b>*</b> </label>
                             <input type="text" id="nombre_categoria" class="form-control">
+                            <small style="color:red;display:none" id="lbl_create">*Este campo es requerido</small>
                         </div>
                     </div>
                 </div>
@@ -272,14 +283,21 @@ include('../layout/parte2.php');
 <script>
     $('#btn-create').click(function() {
         var nombre_categoria = $('#nombre_categoria').val();
-        var url = "../app/controllers/categorias/registro_de_categoria.php";
 
-        $.get(url, {
-            nombre_categoria: nombre_categoria
-        }, function(datos) {
-            $('#respuesta').html(datos);
+        if (nombre_categoria == "") {
+            $('#nombre_categoria').focus();
+            $('#lbl_create').css('display', 'block');
+        } else {
+            var url = "../app/controllers/categorias/registro_de_categoria.php";
 
-        });
+            $.get(url, {
+                nombre_categoria: nombre_categoria
+            }, function(datos) {
+                $('#respuesta').html(datos);
+
+            });
+        }
+
     })
 </script>
 

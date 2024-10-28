@@ -45,87 +45,89 @@ include('../app/controllers/almacen/listado_de_productos.php');
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            <center>Nro</center>
-                                        </th>
-                                        <th>
-                                            <center>Codigo</center>
-                                        </th>
-                                        <th>
-                                            <center>Categoria</center>
-                                        </th>
-                                        <th>
-                                            <center>Imagen</center>
-                                        </th>
-                                        <th>
-                                            <center>Nombre</center>
-                                        </th>
-                                        <th>
-                                            <center>Descripcion</center>
-                                        </th>
-                                        <th>
-                                            <center>Stock</center>
-                                        </th>
-                                        <th>
-                                            <center>Stock Minimo</center>
-                                        </th>
-                                        <th>
-                                            <center>Stock Maximo</center>
-                                        </th>
-                                        <th>
-                                            <center>Precio Compra</center>
-                                        </th>
-                                        <th>
-                                            <center>Precio Venta</center>
-                                        </th>
-                                        
-                                        <th>
-                                            <center>Fecha ingreso</center>
-                                        </th>
-                                        <th>
-                                            <center>Email</center>
-                                        </th>
-                                        <th>
-                                            <center>Acciones</center>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $contador = 0;
-                                    // Iterar sobre los datos de usuarios
-                                    foreach ($productos_datos as $productos_dato) {
+                            <div class="table table-responsive">
+                                <table id="example1" class="table table-bordered table-striped  table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <center>Nro</center>
+                                            </th>
+                                            <th>
+                                                <center>Codigo</center>
+                                            </th>
+                                            <th>
+                                                <center>Categoria</center>
+                                            </th>
+                                            <th>
+                                                <center>Imagen</center>
+                                            </th>
+                                            <th>
+                                                <center>Nombre</center>
+                                            </th>
+                                            <th>
+                                                <center>Descripcion</center>
+                                            </th>
+                                            <th>
+                                                <center>Stock</center>
+                                            </th>
+                                            <th>
+                                                <center>Precio Compra</center>
+                                            </th>
+                                            <th>
+                                                <center>Precio Venta</center>
+                                            </th>
 
-                                    ?>  
-                                        <td><?php echo $contador = $contador + 1; ?></td>
-                                        <td><?php echo $productos_dato['codigo']; ?></td>
-                                        <td><?php echo $productos_dato['categoria']; ?></td>
-                                        <td>
-                                            <img src="<?php echo $productos_dato['imagen']; ?>" width="100%" alt="">
-                                        </td>
-                                        <td><?php echo $productos_dato['nombre']; ?></td>
-                                        <td><?php echo $productos_dato['descripcion']; ?></td>
-                                        <td><?php echo $productos_dato['stock']; ?></td>
-                                        <td><?php echo $productos_dato['stock_minimo']; ?></td>
-                                        <td><?php echo $productos_dato['stock_maximo']; ?></td>
-                                        <td><?php echo $productos_dato['precio_compra']; ?></td>
-                                        <td><?php echo $productos_dato['precio_venta']; ?></td>
-                                        <td><?php echo $productos_dato['fecha_ingreso']; ?></td>
-                                        <td><?php echo $productos_dato['email']; ?></td>
-                                        <td>
-                                            <a href="" class="btn btn-success"><i class="fa fa-pencil-alt"></i> Editar</a>
-                                        </td>
-                                    <?php
-                                    }
-                                    ?>
-                                </tbody>
-                                <tfoot>
-                                </tfoot>
+                                            <th>
+                                                <center>Fecha ingreso</center>
+                                            </th>
+                                            <th>
+                                                <center>Email</center>
+                                            </th>
+                                            <th>
+                                                <center>Acciones</center>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $contador = 0;
+                                        // Iterar sobre los datos de usuarios
+                                        foreach ($productos_datos as $productos_dato) {
+                                          $id_producto = $productos_dato['id_producto'];      
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $contador = $contador + 1; ?></td>
+                                                <td><?php echo $productos_dato['codigo']; ?></td>
+                                                <td><?php echo $productos_dato['categoria']; ?></td>
+                                                <td>
+                                                    <img src="<?php echo $URL . "/almacen/img_productos/" . $productos_dato['imagen']; ?>" width="100%" alt="">
+                                                </td>
+                                                <td><?php echo $productos_dato['nombre']; ?></td>
+                                                <td><?php echo $productos_dato['descripcion']; ?></td>
+                                                <td><?php echo $productos_dato['stock']; ?></td>
+                                                <td><?php echo $productos_dato['precio_compra']; ?></td>
+                                                <td><?php echo $productos_dato['precio_venta']; ?></td>
+                                                <td><?php echo $productos_dato['fecha_ingreso']; ?></td>
+                                                <td><?php echo $productos_dato['email']; ?></td>
+                                                <td>
+                                                    <center>
+                                                        <div class="btn-group">
+                                                            <a href="<?php echo $URL; ?>/almacen/show.php?id=<?php echo $id_producto; ?>" type="button" class="btn btn-info btn-sm"><i class="fas fa-eye"></i> Ver</a>
+                                                            <a href="<?php echo $URL; ?>/almacen/update.php?id=<?php echo $id_producto; ?>" type="button" class="btn btn-success btn-sm"><i class="fas fa-edit"></i> Editar</a>
+                                                            <a href="<?php echo $URL; ?>/almacen/delete.php?id=<?php echo $id_producto; ?>" type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Borrar</a>
+                                                        </div>
+                                                    </center>
+                                                </td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                    </tbody>
+                                    <tfoot>
+                                    </tfoot>
 
-                            </table>
+                                </table>
+                            </div>
                         </div>
                         <!-- /.card-body -->
                     </div>

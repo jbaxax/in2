@@ -8,11 +8,11 @@ include('../layout/sesion.php');
 // Incluir la primera parte del layout (encabezado, menú, etc.)
 include('../layout/parte1.php');
 
-// Incluir el controlador para listar productos
-include('../app/controllers/almacen/listado_de_productos.php');
-
 // Incluir 
-include('../app/controllers/categorias/listado_de_categoria.php')
+include('../app/controllers/categorias/listado_de_categoria.php');
+
+
+include('../app/controllers/almacen/cargar_producto.php')
 
 ?>
 
@@ -22,7 +22,7 @@ include('../app/controllers/categorias/listado_de_categoria.php')
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Registro de un nuevo producto</h1>
+                    <h1 class="m-0">Actualizar producto</h1>
                 </div><!-- /.col -->
 
             </div><!-- /.row -->
@@ -35,7 +35,7 @@ include('../app/controllers/categorias/listado_de_categoria.php')
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card card-primary">
+                    <div class="card card-success">
                         <div class="card-header">
                             <h3 class="card-title">Completa el formulario</h3>
 
@@ -50,38 +50,18 @@ include('../app/controllers/categorias/listado_de_categoria.php')
                             <div class="row">
                                 <div class="col-md-12">
                                     <!-- Formulario para crear un nuevo rol -->
-                                    <form action="../app/controllers/almacen/create.php" method="post" enctype="multipart/form-data">
-
+                                    <form action="../app/controllers/almacen/update.php" method="post" enctype="multipart/form-data">
+                                        <input type="text" value="<?php echo $id_producto_get; ?>" name="id_producto" hidden>
                                         <div class="row">
                                             <div class="col-md-9">
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="">Codigo:</label>
-                                                            <?php
-                                                            function ceros($numero)
-                                                            {
-                                                                $len = 0;
-                                                                $cantidad_ceros = 5;
-                                                                $aux = $numero;
-                                                                $pos = strlen($numero);
-                                                                $len = $cantidad_ceros - $pos;
-                                                                for ($i = 0; $i < $len; $i++) {
-                                                                    $aux = "0" . $aux;
-                                                                }
-                                                                return $aux;
-                                                            }
 
-                                                            $contador_de_id_productos = 1;
-                                                            // Iterar sobre los datos de usuarios
-                                                            foreach ($productos_datos as $productos_dato) {
-                                                                $contador_de_id_productos = $contador_de_id_productos + 1;
-                                                            }
-
-                                                            ?>
                                                             <input type="text" class="form-control"
-                                                                value="<?php echo "P-" . ceros($contador_de_id_productos) ?>" disabled>
-                                                            <input type="text" name="codigo" value="<?php echo "P-" . ceros($contador_de_id_productos) ?>" hidden>
+                                                                value="<?php echo $codigo ?>" disabled>
+                                                            <input type="text" name="codigo" value="<?php echo $codigo; ?>" hidden>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
@@ -90,9 +70,17 @@ include('../app/controllers/categorias/listado_de_categoria.php')
                                                             <div style="display: flex">
                                                                 <select name="id_categoria" id="" class="form-control" required>
                                                                     <?php
-                                                                    foreach ($categorias_datos as $categorias_dato) { ?>
-                                                                        <option value="<?php echo $categorias_dato['id_categoria']; ?>">
-                                                                            <?php echo $categorias_dato['nombre_categoria']; ?>
+                                                                    foreach ($categorias_datos as $categorias_dato) {
+                                                                        $nombre_categoria_tabla = $categorias_dato['nombre_categoria'];
+                                                                        $id_categoria = $categorias_dato['id_categoria'];
+                                                                    ?>
+                                                                        <option value="<?php echo $id_categoria; ?>"
+                                                                            <?php
+                                                                            if ($nombre_categoria_tabla == $nombre_categoria) { ?>
+                                                                            selected="selected"
+                                                                            <?php
+                                                                            }
+                                                                            ?>><?php echo $nombre_categoria_tabla ?>
                                                                         </option>
                                                                     <?php
 
@@ -100,14 +88,13 @@ include('../app/controllers/categorias/listado_de_categoria.php')
                                                                     ?>
 
                                                                 </select>
-                                                                <a href="<?php echo $URL;?>/categorias" class="btn btn-primary"><i class="fa fa-plus"></i></a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="">Nombre del producto:</label>
-                                                            <input type="text" name="nombre" class="form-control" required>
+                                                            <input type="text" name="nombre" value="<?php echo $nombre ?>" class="form-control" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -115,12 +102,12 @@ include('../app/controllers/categorias/listado_de_categoria.php')
                                                     <div class="col-md-4">
                                                         <label for="">Usuario</label>
                                                         <input type="text" class="form-control" value="<?php echo $email_sesion; ?>" disabled>
-                                                        <input type="text" name="id_usuario" value="<?php echo $id_usuario_sesion?>" hidden>
+                                                        <input type="text" name="id_usuario" value="<?php echo $id_usuario ?>" hidden>
                                                     </div>
                                                     <div class="col-md-8">
                                                         <div class="form-group">
                                                             <label for="">Descripcion:</label>
-                                                            <textarea name="descripcion" id="" rows="2" class="form-control"></textarea>
+                                                            <textarea name="descripcion" id="" rows="2" class="form-control"><?php echo $descripcion;?></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -128,37 +115,37 @@ include('../app/controllers/categorias/listado_de_categoria.php')
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label for="">Stock:</label>
-                                                            <input type="number" name="stock" class="form-control" required>
+                                                            <input type="number" name="stock" value="<?php echo $stock; ?>" class="form-control" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label for="">Stock minimo:</label>
-                                                            <input type="number" name="stock_minimo" class="form-control">
+                                                            <input type="number" name="stock_minimo" value="<?php echo $stock_minimo; ?>" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label for="">Stock maximo:</label>
-                                                            <input type="number" name="stock_maximo" class="form-control">
+                                                            <input type="number" name="stock_maximo" value="<?php echo $stock_maximo; ?>" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label for="">Precio compra:</label>
-                                                            <input type="number" name="precio_compra" class="form-control" required>
+                                                            <input type="number" name="precio_compra" value="<?php echo $precio_compra; ?>" class="form-control" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label for="">Precio venta:</label>
-                                                            <input type="number" name="precio_venta" class="form-control" required>
+                                                            <input type="number" name="precio_venta" value="<?php echo $precio_venta; ?>" class="form-control" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label for="">Fecha de ingreso:</label>
-                                                            <input type="date" name="fecha_ingreso" class="form-control" required>
+                                                            <input type="date" name="fecha_ingreso" value="<?php echo $fecha_ingreso; ?>" class="form-control" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -167,9 +154,12 @@ include('../app/controllers/categorias/listado_de_categoria.php')
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="">Imagen del producto</label>
-                                                    <input type="file"  name="image" class="form-control" id="file">
+                                                    <input type="file" name="image" class="form-control" id="file">
+                                                    <input type="text" name="image_text" value="<?php echo $imagen; ?>" hidden>
                                                     <br>
-                                                    <output id="list"></output>
+                                                    <output id="list">
+                                                        <img src="<?php echo $URL."/almacen/img_productos/".$imagen;?>" width="100%" alt="">
+                                                    </output>
                                                     <script>
                                                         function archivo(evt) {
                                                             var files = evt.target.files; // FileList object
@@ -202,7 +192,7 @@ include('../app/controllers/categorias/listado_de_categoria.php')
 
                                         <div class="form-group">
                                             <a href="index.php" class="btn btn-secondary">Cancelar</a>
-                                            <button type="submit" class="btn btn-primary">Guardar</button>
+                                            <button type="submit" class="btn btn-primary">Actualizar</button>
                                         </div>
 
                                     </form>

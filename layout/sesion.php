@@ -15,6 +15,7 @@ if(isset($_SESSION['sesion_email'])){
 
     // Extraer el nombre del usuario de los resultados
     foreach($usuarios as $usuario){
+        $id_usuario_sesion = $usuario['id_usuario'];
         $nombres_sesion = $usuario['nombres'];
         $rol_sesion = $usuario['rol'];
     }

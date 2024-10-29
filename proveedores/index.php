@@ -93,7 +93,11 @@ include('../app/controllers/proveedores/listado_de_proveedores.php');
                                                 <?php echo $nombre_proveedor; ?>
                                             </td>
                                             <td>
-                                                <?php echo $proveedores_dato['celular']; ?>
+                                                <a href="https://wa.me/51<?php echo $proveedores_dato['celular']; ?>" target="_blank" class="btn btn-success">
+                                                    <i class="fa fa-phone"></i>
+                                                    <?php echo $proveedores_dato['celular']; ?>
+                                                </a>
+                                                
                                             </td>
                                             <td>
                                                 <?php echo $proveedores_dato['telefono']; ?>
@@ -109,95 +113,95 @@ include('../app/controllers/proveedores/listado_de_proveedores.php');
                                             </td>
 
                                             <td>
-                                                <center>
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-update<?php echo $id_proveedor; ?>">
-                                                            <i class="fa fa-edit"></i> Editar
-                                                        </button>
-                                                        <!-- modal para editar categorias -->
-                                                        <div class="modal fade" id="modal-update<?php echo $id_proveedor; ?>">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header" style="background-color: #28a745; color: white">
-                                                                        <h4 class="modal-title">Editar proveedor</h4>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </button>
+
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-update<?php echo $id_proveedor; ?>">
+                                                        <i class="fa fa-edit"></i> Editar
+                                                    </button>
+
+                                                    <!-- modal para editar categorias -->
+                                                    <div class="modal fade" id="modal-update<?php echo $id_proveedor; ?>">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header" style="background-color: #28a745; color: white">
+                                                                    <h4 class="modal-title">Editar proveedor</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">Nombre del proveedor<b>*</b> </label>
+                                                                                <input type="text" id="nombre_proveedor<?php echo $id_proveedor; ?>" value="<?php echo $nombre_proveedor ?>" class="form-control">
+                                                                                <small style="color:red;display:none" id="lbl_nombre<?php echo $id_proveedor; ?>">*Este campo es requerido</small>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">Celular<b>*</b> </label>
+                                                                                <input type="text" id="celular<?php echo $id_proveedor; ?>" value="<?php echo $proveedores_dato['celular'] ?>" class="form-control">
+                                                                                <small style="color:red;display:none" id="lbl_celular<?php echo $id_proveedor; ?>">*Este campo es requerido</small>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="modal-body">
 
-
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label for="">Nombre del proveedor<b>*</b> </label>
-                                                                                    <input type="text" id="nombre_proveedor<?php echo $id_proveedor; ?>" value="<?php echo $nombre_proveedor ?>" class="form-control">
-                                                                                    <small style="color:red;display:none" id="lbl_nombre">*Este campo es requerido</small>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label for="">Celular<b>*</b> </label>
-                                                                                    <input type="text" id="celular<?php echo $id_proveedor; ?>" value="<?php echo $proveedores_dato['celular'] ?>" class="form-control">
-                                                                                    <small style="color:red;display:none" id="lbl_celular">*Este campo es requerido</small>
-                                                                                </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">Telefono </label>
+                                                                                <input type="text" id="telefono<?php echo $id_proveedor; ?>" class="form-control" value="<?php echo $proveedores_dato['telefono'] ?>">
+                                                                                <small style="color:red;display:none" id="lbl_telefono<?php echo $id_proveedor; ?>">*Este campo es requerido</small>
                                                                             </div>
                                                                         </div>
-
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label for="">Telefono </label>
-                                                                                    <input type="text" id="telefono<?php echo $id_proveedor; ?>" class="form-control" value="<?php echo $proveedores_dato['telefono'] ?>">
-                                                                                    <small style="color:red;display:none" id="lbl_telefono">*Este campo es requerido</small>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label for="">Empresa<b>*</b> </label>
-                                                                                    <input type="text" id="empresa<?php echo $id_proveedor; ?>" class="form-control" value="<?php echo $proveedores_dato['empresa'] ?>">
-                                                                                    <small style="color:red;display:none" id="lbl_empresa">*Este campo es requerido</small>
-                                                                                </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">Empresa<b>*</b> </label>
+                                                                                <input type="text" id="empresa<?php echo $id_proveedor; ?>" class="form-control" value="<?php echo $proveedores_dato['empresa'] ?>">
+                                                                                <small style="color:red;display:none" id="lbl_empresa<?php echo $id_proveedor; ?>">*Este campo es requerido</small>
                                                                             </div>
                                                                         </div>
-
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label for="">Email </label>
-                                                                                    <input type="email" id="email<?php echo $id_proveedor; ?>" class="form-control" value="<?php echo $proveedores_dato['email'] ?>">
-                                                                                    <small style="color:red;display:none" id="lbl_email">*Este campo es requerido</small>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label for="">Direccion<b>*</b> </label>
-                                                                                    <textarea name="" id="direccion<?php echo $id_proveedor; ?>" class="form-control"><?php echo $proveedores_dato['direccion'] ?></textarea>
-                                                                                    <small style="color:red;display:none" id="lbl_direccion">*Este campo es requerido</small>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-
                                                                     </div>
-                                                                    <div class="modal-footer justify-content-between">
-                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                                                        <button type="button" class="btn btn-success" id="btn-update<?php echo $id_proveedor; ?>">Actualizar</button>
 
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">Email </label>
+                                                                                <input type="email" id="email<?php echo $id_proveedor; ?>" class="form-control" value="<?php echo $proveedores_dato['email'] ?>">
+                                                                                <small style="color:red;display:none" id="lbl_email<?php echo $id_proveedor; ?>">*Este campo es requerido</small>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">Direccion<b>*</b> </label>
+                                                                                <textarea name="" id="direccion<?php echo $id_proveedor; ?>" class="form-control"><?php echo $proveedores_dato['direccion'] ?></textarea>
+                                                                                <small style="color:red;display:none" id="lbl_direccion<?php echo $id_proveedor; ?>">*Este campo es requerido</small>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
 
 
                                                                 </div>
+                                                                <div class="modal-footer justify-content-between">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                                    <button type="button" class="btn btn-success" id="btn-update<?php echo $id_proveedor; ?>">Actualizar</button>
+
+                                                                </div>
+
 
                                                             </div>
-                                                            <!-- /.modal-content -->
-                                                        </div>
-                                                        <!-- /.modal-dialog -->
-                                                    </div>
-                                                    <!-- /.modal para editar proveedors-->
 
+                                                        </div>
+                                                        <!-- /.modal-content -->
+                                                    </div>
+                                                    <!-- /.modal-dialog -->
                                                     <script>
                                                         $('#btn-update<?php echo $id_proveedor; ?>').click(function() {
+
+                                                            var id_proveedor = '<?php echo $id_proveedor; ?>';
                                                             var nombre_proveedor = $('#nombre_proveedor<?php echo $id_proveedor; ?>').val();
                                                             var celular = $('#celular<?php echo $id_proveedor; ?>').val();
                                                             var telefono = $('#telefono<?php echo $id_proveedor; ?>').val();
@@ -208,21 +212,22 @@ include('../app/controllers/proveedores/listado_de_proveedores.php');
                                                             var id_proveedor = '<?php echo $id_proveedor; ?>';
 
                                                             if (nombre_proveedor == "") {
-                                                                $('#nombre_proveedor').focus();
-                                                                $('#lbl_nombre').css('display', 'block');
+                                                                $('#nombre_proveedor<?php echo $id_proveedor; ?>').focus();
+                                                                $('#lbl_nombre<?php echo $id_proveedor; ?>').css('display', 'block');
                                                             } else if (celular == "") {
-                                                                $('#celular').focus();
-                                                                $('#lbl_celular').css('display', 'block');
+                                                                $('#celular<?php echo $id_proveedor; ?>').focus();
+                                                                $('#lbl_celular<?php echo $id_proveedor; ?>').css('display', 'block');
                                                             } else if (empresa == "") {
-                                                                $('#empresa').focus();
-                                                                $('#lbl_empresa').css('display', 'block');
+                                                                $('#empresa<?php echo $id_proveedor; ?>').focus();
+                                                                $('#lbl_empresa<?php echo $id_proveedor; ?>').css('display', 'block');
                                                             } else if (direccion == "") {
-                                                                $('#direccion').focus();
-                                                                $('#lbl_direccion').css('display', 'block');
+                                                                $('#direccion<?php echo $id_proveedor; ?>').focus();
+                                                                $('#lbl_direccion<?php echo $id_proveedor; ?>').css('display', 'block');
                                                             } else {
-                                                                var url = "../app/controllers/proveedores/create.php";
+                                                                var url = "../app/controllers/proveedores/update.php";
 
                                                                 $.get(url, {
+                                                                    id_proveedor: id_proveedor,
                                                                     nombre_proveedor: nombre_proveedor,
                                                                     celular: celular,
                                                                     telefono: telefono,
@@ -238,10 +243,121 @@ include('../app/controllers/proveedores/listado_de_proveedores.php');
 
                                                         })
                                                     </script>
-                                                    <div id="respuesta_update<?php echo $id_categoria; ?>"></div>
+                                                    <div id="respuesta_update<?php echo $id_proveedor; ?>"></div>
+                                                </div>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete<?php echo $id_proveedor; ?>">
+                                                        <i class="fa fa-trash"></i> Borrar
+                                                    </button>
+
+                                                    <!-- modal para editar categorias -->
+                                                    <div class="modal fade" id="modal-delete<?php echo $id_proveedor; ?>">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header" style="background-color: #ca0a0b; color: white">
+                                                                    <h4 class="modal-title">Borrar proveedor</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">Nombre del proveedor<b>*</b> </label>
+                                                                                <input type="text" id="nombre_proveedor<?php echo $id_proveedor; ?>" value="<?php echo $nombre_proveedor ?>" class="form-control" disabled>
+                                                                                <small style="color:red;display:none" id="lbl_nombre<?php echo $id_proveedor; ?>">*Este campo es requerido</small>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">Celular<b>*</b> </label>
+                                                                                <input type="text" id="celular<?php echo $id_proveedor; ?>" value="<?php echo $proveedores_dato['celular'] ?>" class="form-control" disabled>
+                                                                                <small style="color:red;display:none" id="lbl_celular<?php echo $id_proveedor; ?>">*Este campo es requerido</small>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">Telefono </label>
+                                                                                <input type="text" id="telefono<?php echo $id_proveedor; ?>" class="form-control" value="<?php echo $proveedores_dato['telefono'] ?>" disabled>
+                                                                                <small style="color:red;display:none" id="lbl_telefono<?php echo $id_proveedor; ?>">*Este campo es requerido</small>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">Empresa<b>*</b> </label>
+                                                                                <input type="text" id="empresa<?php echo $id_proveedor; ?>" class="form-control" value="<?php echo $proveedores_dato['empresa'] ?>" disabled>
+                                                                                <small style="color:red;display:none" id="lbl_empresa<?php echo $id_proveedor; ?>">*Este campo es requerido</small>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">Email </label>
+                                                                                <input type="email" id="email<?php echo $id_proveedor; ?>" class="form-control" value="<?php echo $proveedores_dato['email'] ?>" disabled>
+                                                                                <small style="color:red;display:none" id="lbl_email<?php echo $id_proveedor; ?>">*Este campo es requerido</small>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">Direccion<b>*</b> </label>
+                                                                                <textarea name="" id="direccion<?php echo $id_proveedor; ?>" class="form-control" disabled><?php echo $proveedores_dato['direccion'] ?></textarea>
+                                                                                <small style="color:red;display:none" id="lbl_direccion<?php echo $id_proveedor; ?>">*Este campo es requerido</small>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                </div>
+                                                                <div class="modal-footer justify-content-between">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                                    <button type="button" class="btn btn-danger" id="btn-delete<?php echo $id_proveedor; ?>">Borrar</button>
+
+                                                                </div>
+
+
+                                                            </div>
+
+                                                        </div>
+                                                        <!-- /.modal-content -->
+                                                    </div>
+                                                    <!-- /.modal-dialog -->
+                                                    <script>
+                                                        $('#btn-delete<?php echo $id_proveedor; ?>').click(function() {
+
+                                                                var id_proveedor = '<?php echo $id_proveedor; ?>';
+
+                                                                var url2 = "../app/controllers/proveedores/delete.php";
+
+                                                                $.get(url2, {
+                                                                    id_proveedor: id_proveedor,
+                                                                }, function(datos) {
+                                                                    $('#respuesta_delete<?php echo $id_proveedor; ?>').html(datos);
+
+                                                                });
+                                                            }
+
+                                                        )
+                                                    </script>
+                                                    <div id="respuesta_delete<?php echo $id_proveedor; ?>"></div>
+                                                </div>
+                                                <!-- /.modal para editar proveedors-->
+
+
                         </div>
-                        </center>
+
+
+
+
                         </td>
+
                         </tr>
                     <?php
                                     }

@@ -19,7 +19,7 @@ include('../app/controllers/compras/listado_de_compras.php');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Listado de productos</h1>
+                    <h1 class="m-0">Listado de compras</h1>
                 </div><!-- /.col -->
 
             </div><!-- /.row -->
@@ -35,7 +35,7 @@ include('../app/controllers/compras/listado_de_compras.php');
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Productos registrados</h3>
+                            <h3 class="card-title">Comrpras registrados</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -86,12 +86,35 @@ include('../app/controllers/compras/listado_de_compras.php');
                                         $contador = 0;
                                         // Iterar sobre los datos de usuarios
                                         foreach ($compras_datos as $compras_dato) {
-                                          $id_compra = $compras_dato['id_compra'];      
+                                            $id_compra = $compras_dato['id_compra'];
                                         ?>
                                             <tr>
                                                 <td><?php echo $contador = $contador + 1 ?></td>
                                                 <td><?php echo $compras_dato['nro_compra'] ?></td>
-                                                <td><?php echo $compras_dato['id_producto'] ?></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-producto<?php echo $id_compra ?>">
+                                                        <?php echo $compras_dato['nombre_producto']  ?>
+                                                    </button>
+                                                    <div class="modal fade" id="modal-producto<?php echo $id_compra; ?>">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header" style="background-color: #28a745; color: white">
+                                                                    <h4 class="modal-title">Datos del producto</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+
+
+
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- /.modal-content -->
+                                                        </div>
+
+                                                </td>
                                                 <td><?php echo $compras_dato['fecha_compra'] ?></td>
                                                 <td><?php echo $compras_dato['id_proveedor'] ?></td>
                                                 <td><?php echo $compras_dato['comprobante'] ?></td>
@@ -111,6 +134,7 @@ include('../app/controllers/compras/listado_de_compras.php');
                                         <?php
                                         }
                                         ?>
+
                                     </tbody>
                                     <tfoot>
                                     </tfoot>

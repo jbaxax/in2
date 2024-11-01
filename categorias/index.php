@@ -245,7 +245,7 @@ include('../layout/parte2.php');
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Creacion de nueva categoria</h4>
+                <h4 class="modal-title">Registrar categoria</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

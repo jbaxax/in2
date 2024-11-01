@@ -34,7 +34,7 @@ include('../app/controllers/almacen/cargar_producto.php');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Datos del producto <?php echo $nombre ?> a ser eleiminado</h1>
+                    <h1 class="m-0">Datos del producto <?php echo $nombre ?></h1>
                 </div><!-- /.col -->
 
             </div><!-- /.row -->

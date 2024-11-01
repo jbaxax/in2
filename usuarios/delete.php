@@ -34,7 +34,7 @@ include('../app/controllers/usuarios/show_usuario.php');
                 <div class="col-md-5">
                     <div class="card card-danger">
                         <div class="card-header">
-                            <h3 class="card-title">¿Seguro que desea eliminar el usuario?</h3>
+                            <h3 class="card-title">Datos del usuario</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -64,7 +64,7 @@ include('../app/controllers/usuarios/show_usuario.php');
                                         </div>
                                         <hr>
                                         <div class="form-group">
-                                            <a href="index.php" class="btn btn-secondary">Volver</a>
+                                            <a href="index.php" class="btn btn-secondary">Cancelar</a>
                                             <button type="submit" class="btn btn-danger">Eliminar</button>
                                         </div>
                                     </form>

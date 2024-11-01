@@ -223,7 +223,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <a href="<?php echo $URL; ?>/app/controllers/login/cerrar_sesion.php" class="nav-link" style="background-color: #ca0a0b">
                 <i class="nav-icon fas fa-door-closed"></i>
                 <p>
-                  Cerra Sesión
+                  Cerrar Sesión
 
                 </p>
               </a>

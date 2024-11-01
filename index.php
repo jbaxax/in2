@@ -58,7 +58,7 @@ include('app/controllers/proveedores/listado_de_proveedores.php');
             </div>
             </a>
             <a href="<?php echo $URL; ?>/usuarios" class="small-box-footer">
-              Mas detalle <i class="fas fa-arrow-circle-right"></i>
+              Mas detalles <i class="fas fa-arrow-circle-right"></i>
             </a>
           </div>
         </div>
@@ -81,7 +81,7 @@ include('app/controllers/proveedores/listado_de_proveedores.php');
             </div>
             </a>
             <a href="<?php echo $URL; ?>/roles" class="small-box-footer">
-              Mas detalle <i class="fas fa-arrow-circle-right"></i>
+              Mas detalles <i class="fas fa-arrow-circle-right"></i>
             </a>
           </div>
         </div>
@@ -97,7 +97,7 @@ include('app/controllers/proveedores/listado_de_proveedores.php');
             }
             ?>  
             <h3><?php echo $contador_de_categorias ?></h3>
-              <p>categorias Registrados</p>
+              <p>Categorias Registradas</p>
             </div>
             <a href="<?php echo $URL; ?>/categorias">
             <div class="icon">
@@ -105,7 +105,7 @@ include('app/controllers/proveedores/listado_de_proveedores.php');
             </div>
             </a>
             <a href="<?php echo $URL; ?>/categorias" class="small-box-footer">
-              Mas detalle <i class="fas fa-arrow-circle-right"></i>
+              Mas detalles <i class="fas fa-arrow-circle-right"></i>
             </a>
           </div>
         </div>
@@ -129,7 +129,7 @@ include('app/controllers/proveedores/listado_de_proveedores.php');
             </div>
             </a>
             <a href="<?php echo $URL; ?>/almacen" class="small-box-footer">
-              Mas detalle <i class="fas fa-arrow-circle-right"></i>
+              Mas detalles <i class="fas fa-arrow-circle-right"></i>
             </a>
           </div>
         </div>

@@ -129,11 +129,13 @@ include('../app/controllers/compras/listado_de_compras.php');
                                                                                 </button>
                                                                                 <script>
                                                                                     $('#btn_seleccionar<?php echo $id_producto ?>').click(function() {
+                                                                                        var id_producto = "<?php echo $productos_dato['id_producto']; ?>";
+                                                                                        $('#id_producto').val(id_producto);
+
                                                                                         var codigo = "<?php echo $productos_dato['codigo']; ?>";
-
                                                                                         $('#codigo').val(codigo);
-                                                                                        var categoria = "<?php echo $productos_dato['categoria']; ?>";
 
+                                                                                        var categoria = "<?php echo $productos_dato['categoria']; ?>";
                                                                                         $('#categoria').val(categoria)
                                                                                         var nombre = "<?php echo $productos_dato['nombre']; ?>";
 
@@ -146,7 +148,7 @@ include('../app/controllers/compras/listado_de_compras.php');
                                                                                         var stock = "<?php echo $productos_dato['stock']; ?>";
                                                                                         $('#stock').val(stock)
                                                                                         $('#stock_actual').val(stock)
-                                                                                        
+
                                                                                         var stock_minimo = "<?php echo $productos_dato['stock_minimo']; ?>";
 
                                                                                         $('#stock_minimo').val(stock_minimo)
@@ -216,6 +218,7 @@ include('../app/controllers/compras/listado_de_compras.php');
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="form-group">
+                                                        <input type="text" id="id_producto" hidden>
                                                         <label for="">Codigo:</label>
 
                                                         <input type="text" class="form-control" id="codigo" disabled>
@@ -375,6 +378,9 @@ include('../app/controllers/compras/listado_de_compras.php');
                                                                                 <script>
                                                                                     $('#btn_seleccionar_proveedor<?php echo $id_proveedor ?>').click(function() {
 
+                                                                                        var id_proveedor = "<?php echo $id_proveedor; ?>";
+                                                                                        $('#id_proveedor').val(id_proveedor);
+
                                                                                         var nombre_proveedor = "<?php echo $nombre_proveedor; ?>";
                                                                                         $('#nombre_proveedor').val(nombre_proveedor);
 
@@ -457,6 +463,7 @@ include('../app/controllers/compras/listado_de_compras.php');
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group">
+                                                    <input type="text" id="id_proveedor" hidden>
                                                     <label for="">Nombre del proveedor </label>
                                                     <input type="text" id="nombre_proveedor" class="form-control" disabled>
 
@@ -522,7 +529,7 @@ include('../app/controllers/compras/listado_de_compras.php');
                 <div class="col-md-3">
 
                     <div class="row">
-                        <div class="col-md-12   ">
+                        <div class="col-md-12">
                             <div class="card card-outline card-primary">
                                 <div class="card-header">
                                     <h3 class="card-title"> Detalle de la compra</h3>
@@ -540,35 +547,37 @@ include('../app/controllers/compras/listado_de_compras.php');
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <?php 
+                                                <?php
                                                 $contador_de_compras = 1;
                                                 foreach ($compras_datos as $compras_dato) {
                                                     $contador_de_compras = $contador_de_compras + 1;
                                                 }
                                                 ?>
                                                 <label for="">Numero de la compra</label>
-                                                <input type="text" value="<?php echo $contador_de_compras;?>"  class="form-control" disabled>
+                                                <input type="text" value="<?php echo $contador_de_compras; ?>" class="form-control" disabled>
+                                                <input type="text" value="<?php echo $contador_de_compras; ?>" id="nro_compra" hidden>
+
                                             </div>
                                         </div>
-                                        
+
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="">Fecha de la compra</label>
-                                                <input type="date" class="form-control">
+                                                <input type="date" class="form-control" id="fecha_compra">
                                             </div>
                                         </div>
-                                        
+
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="">Comprobante de la compra</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" id="comprobante">
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="">Precio de la compra</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" id="precio_compra_controlador">
                                             </div>
                                         </div>
 
@@ -582,17 +591,17 @@ include('../app/controllers/compras/listado_de_compras.php');
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="">Stock total</label>
-                                                <input type="text" " id="stock_total" class="form-control" disabled>
+                                                <input type="text" " id=" stock_total" class="form-control" disabled>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="">Cantidad de la compra</label>
-                                                <input type="number"  id="cantidad_compra" class="form-control" >
+                                                <input type="number" id="cantidad_compra" class="form-control">
                                             </div>
                                             <script>
-                                                $('#cantidad_compra').keyup(function(){
+                                                $('#cantidad_compra').keyup(function() {
                                                     var stock_actual = $('#stock_actual').val();
                                                     var stock_compra = $('#cantidad_compra').val();
 
@@ -613,7 +622,59 @@ include('../app/controllers/compras/listado_de_compras.php');
 
 
 
+
                                     </div>
+
+                                    <hr>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <button class="btn btn-primary btn-block" id="btn_guardar_compra">Guardar compra</button>
+                                        </div>
+                                    </div>
+                                    <script>
+                                        $('#btn_guardar_compra').click(function() {
+                                            var id_producto = $('#id_producto').val;
+                                            var nro_compra = $('#nro_compra').val();
+                                            var fecha_compra = $('#fecha_compra').val();
+                                            var comprobante = $('#comprobante').val();
+                                            var precio_compra = $('#precio_compra_controlador').val();
+                                            var cantidad_compra = $('#cantidad_compra').val();
+                                            var id_usuario = '<?php echo $id_usuario_sesion ?>'
+
+                                            if (id_producto == "") {
+                                                $('#id_producto').focus();
+                                                alert("CAMPOS VACIOS");
+                                            } else if (fecha_compra == "") {
+                                                $('#fecha_compra').focus();
+                                                alert("CAMPOS VACIOS");
+                                            } else if (comprobante == "") {
+                                                $('#comprobante').focus();
+                                                alert("CAMPOS VACIOS");
+                                            } else if (precio_compra == "") {
+                                                $('#precio_compra_controlador').focus();
+                                                alert("CAMPOS VACIOS");
+                                            } else if (cantidad_compra == "") {
+                                                $('#cantidad_compra').focus();
+                                                alert("CAMPOS VACIOS");
+                                            } else {
+                                                var url = "../app/controllers/compras/create.php";
+
+                                                $.get(url, {
+                                                    id_producto: id_producto,
+                                                    fecha_compra: fecha_compra,
+                                                    comprobante: comprobante,
+                                                    precio_compra_controlador: precio_compra_controlador,
+                                                    cantidad_compra: cantidad_compra,
+                                                    
+
+                                                }, function(datos) {
+                                                    $('#respuesta').html(datos);
+
+                                                });
+                                            }
+                                        });
+                                    </script>
                                 </div>
                                 <!-- /.card-body -->
                             </div>

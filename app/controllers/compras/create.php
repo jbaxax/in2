@@ -8,18 +8,6 @@ $comprobante = $_GET['comprobante'];
 $precio_compra_controlador = $_GET['precio_compra_controlador'];
 $cantidad_compra = $_GET['cantidad_compra'];
 
-
-$nombreDelArchivo = date("Y-m-d-h-i-s");
-$filename = $nombreDelArchivo."__".$_FILES["image"]["name"];
-$location = "../../../almacen/img_productos/".$filename;
-
-move_uploaded_file($_FILES['image']['tmp_name'],$location);
-
-
-
-
-
-
 $sentencia = $pdo->prepare("INSERT INTO tb_almacen 
        (codigo, nombre, descripcion, stock, stock_minimo, stock_maximo, 
        precio_compra, precio_venta, fecha_ingreso, imagen, id_usuario, 
